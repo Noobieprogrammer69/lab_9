@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Level 4 · Form validation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #2e3b4e; }
+        .card-form {
+            max-width: 32rem;
+            border-radius: 2.2rem;
+            background: #eef3f9;
+            box-shadow: 0 20px 30px -5px #141c26;
+            border: none;
+            padding: 2rem 1.5rem;
+        }
+        .msg-box {
+            margin-top: 1.2rem;
+            padding: 0.8rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: 0.1s;
+        }
+        .error-msg {
+            background-color: #f8d7da;
+            color: #b02a37;
+            border: 1px solid #f1aeb5;
+        }
+        .success-msg {
+            background-color: #d1e7dd;
+            color: #0a5e44;
+            border: 1px solid #a3cfbb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card card-form">
+            <h3 class="mb-3">📋 Enter your name</h3>
+
+            <div class="mb-3">
+                <label for="userName" class="form-label fw-semibold">Name</label>
+                <input type="text" class="form-control form-control-lg" id="userName" placeholder="e.g., Alex">
+            </div>
+
+            <button id="validateBtn" class="btn btn-primary btn-lg w-100">Submit</button>
+
+            <div id="validationMessage" class="msg-box text-center fw-semibold"></div>
+
+            <div class="d-flex justify-content-between mt-4">
+                <a href="level3.html" class="btn btn-outline-secondary px-4">← Back</a>
+                <a href="level5.html" class="btn btn-primary px-4">Next →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const nameInput = document.getElementById('userName');
+        const validateBtn = document.getElementById('validateBtn');
+        const msgBox = document.getElementById('validationMessage');
+
+        validateBtn.addEventListener('click', function() {
+            const name = nameInput.value.trim();
+
+            msgBox.classList.remove('error-msg', 'success-msg');
+
+            if (name === '') {
+                msgBox.textContent = '❌ Name cannot be empty!';
+                msgBox.classList.add('error-msg');
+            } else {
+                msgBox.textContent = `✅ Welcome, ${name}! (valid)`;
+                msgBox.classList.add('success-msg');
+            }
+        });
+    </script>
+</body>
+</html>

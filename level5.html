@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Level 5 · Coin counter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #243b4a; }
+        .coin-card {
+            max-width: 28rem;
+            border-radius: 3rem;
+            background: #f2f6fc;
+            box-shadow: 0 20px 30px #0c1a24;
+            border: none;
+            padding: 2rem 1.5rem;
+        }
+        .coin-display {
+            font-size: 4rem;
+            font-weight: 700;
+            background: #ffd966;
+            display: inline-block;
+            width: 130px;
+            height: 130px;
+            line-height: 130px;
+            border-radius: 50%;
+            box-shadow: inset 0 -5px 5px rgba(0,0,0,0.1), 0 10px 10px #b87c2b;
+            color: #2d2d2d;
+            margin: 15px auto 20px;
+        }
+        .btn-coin {
+            width: 70px;
+            height: 70px;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 50% !important;
+            margin: 0 10px;
+            border: none;
+            box-shadow: 0 6px 0 #0b5e42;
+        }
+        .btn-coin:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #0b5e42;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card coin-card text-center">
+            <h2>🪙 Coin counter</h2>
+            <div class="coin-display" id="coinValue">0</div>
+
+            <div class="d-flex justify-content-center my-4">
+                <button class="btn btn-success btn-coin" id="decreaseBtn">−</button>
+                <button class="btn btn-success btn-coin" id="increaseBtn">+</button>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a href="level4.html" class="btn btn-outline-secondary px-4">← Back</a>
+                <a href="level6.html" class="btn btn-primary px-4">Next →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let coins = 0;
+        const coinSpan = document.getElementById('coinValue');
+        const decreaseBtn = document.getElementById('decreaseBtn');
+        const increaseBtn = document.getElementById('increaseBtn');
+
+        function updateCoinDisplay() {
+            coinSpan.textContent = coins;
+        }
+
+        increaseBtn.addEventListener('click', function() {
+            coins++;
+            updateCoinDisplay();
+        });
+
+        decreaseBtn.addEventListener('click', function() {
+            if (coins > 0) {
+                coins--;
+                updateCoinDisplay();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Level 3 · JavaScript events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #1e2c3a; font-family: 'Segoe UI'; }
+        .card-level3 {
+            width: 30rem;
+            border-radius: 2.5rem;
+            background: #f0f4fa;
+            box-shadow: 0 30px 30px -10px #0b141e;
+            padding: 1.5rem;
+            border: none;
+        }
+        .level-badge {
+            font-size: 1.3rem;
+            background-color: #0d6efd;
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+        }
+        .btn-round {
+            border-radius: 40px;
+            padding: 0.5rem 2rem;
+            margin: 0 5px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card card-level3">
+            <div class="card-body text-center">
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="badge bg-secondary">quest ⚡</span>
+                    <span class="level-badge" id="levelDisplay">Level 3</span>
+                </div>
+
+                <h4>⬆️ Level up!</h4>
+                <p class="text-muted">Click the button to increase (max 6)</p>
+
+                <button id="levelUpBtn" class="btn btn-success btn-round px-4 mb-4">✨ Level up</button>
+
+                <div class="small text-secondary mb-3" id="progressHint">current: 3 / 6</div>
+
+                <div class="d-flex justify-content-between">
+                    <a href="level2.html" class="btn btn-outline-secondary btn-round">← Back</a>
+                    <a href="level4.html" class="btn btn-primary btn-round" id="nextBtn">Next →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            let currentLevel = 3;
+            const maxLevel = 6;
+            
+            const levelDisplay = document.getElementById('levelDisplay');
+            const progressHint = document.getElementById('progressHint');
+            const levelUpBtn = document.getElementById('levelUpBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            function updateUI() {
+                levelDisplay.textContent = `Level ${currentLevel}`;
+                progressHint.textContent = `current: ${currentLevel} / ${maxLevel}`;
+                
+                if (currentLevel >= maxLevel) {
+                    levelUpBtn.disabled = true;
+                    levelUpBtn.classList.add('btn-secondary');
+                    levelUpBtn.classList.remove('btn-success');
+                } else {
+                    levelUpBtn.disabled = false;
+                    levelUpBtn.classList.add('btn-success');
+                    levelUpBtn.classList.remove('btn-secondary');
+                }
+            }
+
+            levelUpBtn.addEventListener('click', function() {
+                if (currentLevel < maxLevel) {
+                    currentLevel++;
+                    updateUI();
+                }
+            });
+
+
+            updateUI();
+        })();
+    </script>
+</body>
+</html>

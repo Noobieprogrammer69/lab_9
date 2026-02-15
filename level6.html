@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest Level 6 · Conditionals</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #1d2c3a; }
+        .door-card {
+            max-width: 32rem;
+            border-radius: 2.5rem;
+            background: #f5f7fc;
+            box-shadow: 0 25px 35px -8px #0f1a24;
+            border: none;
+            padding: 2rem 1.5rem;
+        }
+        .door-btn {
+            width: 90px;
+            height: 90px;
+            font-size: 2.5rem;
+            border-radius: 20px !important;
+            margin: 0 8px;
+            background-color: #8b6e4b;
+            border: 4px solid #5d3f1e;
+            color: #efdbaf;
+            transition: 0.1s;
+            box-shadow: 0 8px 0 #4a3620;
+        }
+        .door-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #4a3620;
+        }
+        .result-box {
+            min-height: 70px;
+            font-size: 1.3rem;
+            border-radius: 60px;
+            padding: 1rem;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card door-card text-center">
+            <h2>🚪 Choose the right door</h2>
+            <p class="text-muted">Only one door is correct (door 2)</p>
+
+            <div class="my-4">
+                <button class="door-btn" id="door1">1</button>
+                <button class="door-btn" id="door2">2</button>
+                <button class="door-btn" id="door3">3</button>
+            </div>
+
+            <div id="resultMessage" class="result-box"></div>
+
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="level5.html" class="btn btn-outline-secondary">← Back</a>
+                <a href="level1.html" class="btn btn-warning fw-bold">🔄 Restart</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const door1 = document.getElementById('door1');
+        const door2 = document.getElementById('door2');
+        const door3 = document.getElementById('door3');
+        const result = document.getElementById('resultMessage');
+
+        function checkDoor(selectedDoor) {
+            if (selectedDoor === 2) {
+                result.innerHTML = '🎉 Success! Door 2 is correct!';
+                result.style.background = '#d1e7dd';
+                result.style.color = '#0a5e44';
+            } else {
+                result.innerHTML = '❌ Wrong door... Try again!';
+                result.style.background = '#f8d7da';
+                result.style.color = '#b02a37';
+            }
+        }
+
+        door1.addEventListener('click', () => checkDoor(1));
+        door2.addEventListener('click', () => checkDoor(2));
+        door3.addEventListener('click', () => checkDoor(3));
+    </script>
+</body>
+</html>
